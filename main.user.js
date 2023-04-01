@@ -40,7 +40,7 @@ downloadBtn.style.color = '#ffffff';
 document.body.appendChild(downloadBtn);
 const faLink = document.createElement('link');
 faLink.rel = 'stylesheet';
-faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
+faLink.href = 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css';
 document.head.appendChild(faLink);
 const style = document.createElement('style');
 style.textContent = `
