@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         国家中小学智慧教育平台电子课本下载
 // @namespace    https://github.com/amakerlife
-// @version      1.1.3
+// @version      1.1.4
 // @description  在国家中小学智慧教育平台网站中添加电子课本下载按钮，免登录下载电子课本
 // @author       Makerlife
 // @match        https://*.smartedu.cn/tchMaterial/detail*
@@ -11,20 +11,20 @@
 // @license      MIT
 // @grant        none
 // ==/UserScript==
- 
+
 const pdfUrlRegExp = /\/pdf.pdf$/;
 const originalFetch = window.fetch;
 window.fetch = function() {
   return originalFetch.apply(this, arguments).then(response => {
     if (pdfUrlRegExp.test(response.url)) {
-      console.log('捕获到 PDF 请求链接：' + response.url);
+      console.log('PDF URL: ' + response.url);
       localStorage.setItem('pdfUrl', response.url);
     }
     return response;
   });
 };
- 
- 
+
+
 const downloadBtn = document.createElement('div');
 downloadBtn.classList.add('download-btn-wrapper');
 downloadBtn.innerHTML = '<a href="#" class="download-link"><span class="download-icon"><i class="fas fa-download"></i></span></a>';
@@ -51,13 +51,13 @@ style.textContent = `
   font-size: 0;
   line-height: 50px;
 }
- 
+
 .download-icon {
   display: block;
   font-size: 24px;
   line-height: 50px;
 }
- 
+
 .download-btn-wrapper {
   display: flex;
   justify-content: center;
@@ -65,15 +65,15 @@ style.textContent = `
 }
 `;
 document.head.appendChild(style);
- 
- 
+
+
 downloadBtn.addEventListener('click', function() {
   const pdfUrl = localStorage.getItem('pdfUrl');
   if (pdfUrl) {
     window.open(pdfUrl, '_blank');
   } else {
-    console.log('未捕获到 PDF 请求链接');
+    console.log('No PDF URL');
   }
 });
- 
+
 document.body.appendChild(downloadBtn);
