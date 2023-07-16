@@ -13,6 +13,7 @@
 // @compatible	 Chrome
 // @compatible	 Firefox
 // @compatible	 Edge
+// @compatible	 safari
 // ==/UserScript==
 
 var url = window.location.href;
