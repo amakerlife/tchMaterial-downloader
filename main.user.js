@@ -10,6 +10,9 @@
 // @icon         https://basic.smartedu.cn/favicon.ico
 // @license      MIT
 // @grant        none
+// @compatible	 Chrome
+// @compatible	 Firefox
+// @compatible	 Edge
 // ==/UserScript==
 
 var url = window.location.href;
