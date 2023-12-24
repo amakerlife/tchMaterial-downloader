@@ -10,5 +10,5 @@ Greasy Fork 链接：[scripts/461957](https://greasyfork.org/zh-CN/scripts/46195
 
 支持我一杯奶茶
 
-![](https://img.makerlife.tk/data/202303191834707.jpeg)
-![](https://img.makerlife.tk/data/202303251623588.jpeg)
+![](https://img.makerlife.top/data/202303191834707.jpeg)
+![](https://img.makerlife.top/data/202303251623588.jpeg)
