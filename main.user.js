@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         国家中小学智慧教育平台电子课本下载
 // @namespace    https://github.com/amakerlife
-// @version      1.2.0
+// @version      1.2.1
 // @description  在国家中小学智慧教育平台网站中添加电子课本下载按钮，免登录下载电子课本
 // @author       Makerlife
 // @match        https://*.smartedu.cn/tchMaterial/detail*
@@ -29,6 +29,13 @@
     var id = match[0];
     console.log(`ContentID: ${id}`);
 
+    var savedUrl = localStorage.getItem(`validUrl_${id}`);
+    if (savedUrl) {
+      console.log(`Using saved URL: ${savedUrl}`);
+      window.location.assign(savedUrl);
+      return;
+    }
+
     var urls = [
       `https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets_document/${id}.pkg/pdf.pdf`,
       `https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets/${id}.pkg/pdf.pdf`,
@@ -43,6 +50,7 @@
         try {
           let response = await fetch(url, { method: 'HEAD' });
           if (response.status === 200) {
+            localStorage.setItem(`validUrl_${id}`, url);
             window.location.assign(url);
             return;
           }
