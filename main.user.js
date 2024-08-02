@@ -10,6 +10,7 @@
 // @icon         https://basic.smartedu.cn/favicon.ico
 // @license      MIT
 // @grant        GM_download
+// @grant        GM_registerMenuCommand
 // @compatible   Chrome
 // @compatible   Firefox
 // @compatible   Edge
@@ -41,8 +42,6 @@
         var regex = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/g;
         var match = regex.exec(url);
         if (match) {
-            var originalTitle = document.title;
-            document.title = `[Redirecting] ${originalTitle}`;
             var id = match[0];
             console.log(`ContentID: ${id}`);
             var filNameElement = document.querySelector("span.fish-breadcrumb-link")
@@ -65,20 +64,22 @@
                 `https://r2-ndr.ykt.cbern.com.cn/edu_product/esp/assets/${id}.pkg/pdf.pdf`,
                 `https://r3-ndr.ykt.cbern.com.cn/edu_product/esp/assets_document/${id}.pkg/pdf.pdf`,
                 `https://r3-ndr.ykt.cbern.com.cn/edu_product/esp/assets/${id}.pkg/pdf.pdf`
-            ];
+    ];
             checkUrls(urls,id,fileName);
         } else {
             console.log("No ContentID Found!");
         }
     }
-
-    let init = setInterval(function(){
+    var init = function(){
+    let init_interval = setInterval(function(){
         let filNameElement = document.querySelector("span.fish-breadcrumb-link")
         if(filNameElement){
-            clearInterval(init)
+            clearInterval(init_interval)
             new ElegantAlertBox("正在解析，即将开始下载")
             main()
         }
-    },1000)
+    },500)
+    }
+     GM_registerMenuCommand(`【下载电子课本】`,init)
 
-})();
+    })();
