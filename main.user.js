@@ -57,8 +57,6 @@
         var regex = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/g;
         var match = regex.exec(url);
         if (match) {
-            var originalTitle = document.title;
-            document.title = `[Redirecting] ${originalTitle}`;
             var id = match[0];
             console.log(`ContentID: ${id}`);
             var filNameElement = document.querySelector("span.fish-breadcrumb-link");
