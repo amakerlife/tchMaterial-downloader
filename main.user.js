@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         国家中小学智慧教育平台电子课本下载
 // @namespace    https://github.com/amakerlife
-// @version      1.4.0
+// @version      1.4.1
 // @description  在国家中小学智慧教育平台网站中添加电子课本下载按钮，免登录下载电子课本
 // @author       Makerlife
 // @match        https://*.smartedu.cn/tchMaterial/detail*
@@ -15,7 +15,7 @@
 // @compatible   Edge
 // @compatible   Safari
 // @require      https://greasyfork.org/scripts/425166-elegant-alert-%E5%BA%93/code/elegant%20alert()%E5%BA%93.js?version=922763
-// @require      https://cdn.jsdelivr.net/npm/sweetalert2@11
+// @require      https://lib.baomitu.com/sweetalert2/11.7.22/sweetalert2.all.min.js
 // ==/UserScript==
 
 (function() {
